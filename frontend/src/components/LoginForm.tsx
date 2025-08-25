@@ -96,6 +96,7 @@ function LoginForm() {
               type="submit" 
               className="btn btn-primary w-full btn-lg"
               disabled={isLoading}
+              style={{ margin: "10px 0 0 0" }}
             >
               {isLoading ? (
                 <>

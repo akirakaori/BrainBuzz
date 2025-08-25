@@ -54,7 +54,7 @@ function ListQuestionSet() {
   return (
     <div className="container">
       <div className="text-center mb-8">
-        <h1>Available Quizzes</h1>
+        <h1 style={{ color: "lavender" }}>Available Quizzes</h1>
         <p>Choose a quiz to test your knowledge and track your progress</p>
       </div>
 

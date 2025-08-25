@@ -78,62 +78,200 @@ code {
   margin-bottom: 16px;
 }
 
+
+
+
+/* PASTE THIS ENTIRE BLOCK INTO YOUR App.css FILE */
+
+/* === NEW NAVBAR CSS (Tailored for Your Dark Theme) === */
 .navbar {
   background: #2d1856;
   padding: 16px 0;
+  box-shadow: 0 2px 8px 0 rgba(80, 40, 160, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.navbar-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 8px 0 rgba(80, 40, 160, 0.12);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
-.navbar .auth-links {
-  display: flex !important;
+.navbar-brand {
+  display: flex;
   align-items: center;
-  gap: 12px;
 }
 
-.navbar .auth-links .btn {
-  font-size: 0.95rem;
-  padding: 8px 16px;
-  border-radius: 6px;
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* A bit smaller gap for the icon */
   text-decoration: none;
-  transition: all 0.2s;
 }
 
-.navbar .btn-secondary {
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid #a259ff;
-}
-
-.navbar .btn-secondary:hover {
-  background: #a259ff;
-  color: #ffffff;
-}
-
-.navbar-logo {
+.brand-text {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #a259ff;
+  color: #a259ff; /* Using your purple accent color */
   letter-spacing: 2px;
 }
 
-.navbar-links {
+.navbar-menu {
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 
-.navbar-link {
+.nav-link {
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
 }
 
-.navbar-link:hover {
+.nav-link:hover {
   color: #a259ff;
+}
+
+.nav-link.active {
+  color: #a259ff;
+  border-bottom-color: #a259ff;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-links {
+    display: flex;
+    gap: 12px;
+}
+
+
+/* ADD THIS NEW STYLE TO YOUR App.css FILE */
+
+.navbar-logout-btn {
+  background: transparent;
+  border: 1px solid #a259ff;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.navbar-logout-btn:hover {
+  background: #a259ff;
+  color: #ffffff;
+}
+
+
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #ffffff; /* White bars for dark background */
+  border-radius: 2px;
+  transition: 0.3s ease-in-out;
+}
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+
+.mobile-menu-btn.active .hamburger span:nth-child(1) { top: 8px; transform: rotate(135deg); }
+.mobile-menu-btn.active .hamburger span:nth-child(2) { opacity: 0; left: -60px; }
+.mobile-menu-btn.active .hamburger span:nth-child(3) { top: 8px; transform: rotate(-135deg); }
+
+.mobile-menu {
+  display: none;
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 768px) {
+  .navbar-menu, .navbar-actions {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #2d1856; /* Match navbar background */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .mobile-menu .nav-link {
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: 1px solid #432b7a;
+  }
+  .mobile-menu .nav-link:last-child {
+    border-bottom: none;
+  }
+  .mobile-actions {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #432b7a;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .w-full {
+      width: 100%;
+  }
+}
+
+.user-menu-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.user-menu-button:hover {
+    color: #a259ff;
+}
+.dropdown-arrow {
+    font-size: 0.7rem;
 }
 
 .glow {

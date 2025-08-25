@@ -8,9 +8,6 @@ export interface IAuthUserList {
   _id: string;
   name: string;
   email: string;
-  password: string;
-  role: string;
-  __v: number;
 }
 
 function AuthHomePage() {
@@ -21,23 +18,19 @@ function AuthHomePage() {
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     async function fetchData() {
-      axios
-        .get("/api/user/list", {
+      try {
+        const response = await axios.get("/api/user/list", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        })
-        .then((response) => {
-          const userList: IAuthUserList[] = response?.data?.users || [];
-          setUsers(userList);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.log("error => ", error);
-          // Remove the annoying alert and just log the error
-          console.error("Failed to fetch user list:", error?.response?.data?.message || "An error occurred");
-          setIsLoading(false);
         });
+        const userList: IAuthUserList[] = response?.data?.users || [];
+        setUsers(userList);
+      } catch (error) {
+        console.error("Failed to fetch user list:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     fetchData();
@@ -53,87 +46,56 @@ function AuthHomePage() {
   }
 
   return (
-    <div>
-      {/* Welcome Hero */}
-      <section className="hero">
-        <div className="container">
-          <h1>Welcome Back to BrainBuxx!</h1>
-          <p>
-            Ready to continue your learning journey? Access your quizzes, 
-            track your progress, and challenge yourself with new questions.
-          </p>
-          <div className="hero-actions">
-            <Link to="/questionset/list" className="btn btn-primary btn-lg">
-              Browse Quizzes
-            </Link>
-            {roleState === "admin" && (
-              <Link to="/admin/questionset/create" className="btn btn-secondary btn-lg">
-                Create New Quiz
-              </Link>
-            )}
-          </div>
+    <div className="section-padding">
+      <div className="container">
+        {/* Dashboard Header */}
+        <div className="dashboard-header">
+          <h1 style={{ color: "lavender" }}>Welcome Back!</h1>
+          <p>Here's a quick overview of your activity and available actions.</p>
         </div>
-      </section>
 
-      {/* Dashboard Stats */}
-      <section style={{ padding: "var(--spacing-16) 0" }}>
-        <div className="container">
-          <div className="text-center mb-8">
-            <h2>Your Dashboard</h2>
-            <p>Overview of your BrainBuxx activity</p>
+        {/* Dashboard Stats Grid */}
+        <div className="stats-grid">
+          <div className="stat-card">
+            <div className="stat-label">
+                {roleState === "admin" ? "Total Users" : "Community Members"}
+            </div>
+            <div className="stat-number">{users.length}</div>
           </div>
           
-          <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-number">{users.length}</div>
-              <div className="stat-label">
-                {roleState === "admin" ? "Total Users" : "Community Members"}
-              </div>
-            </div>
-            
-            <div className="stat-card">
-              <div className="stat-number">🎯</div>
-              <div className="stat-label">Quizzes Available</div>
-              <p style={{ marginTop: "var(--spacing-2)", fontSize: "var(--font-size-sm)" }}>
-                <Link to="/questionset/list" className="text-primary">View All →</Link>
-              </p>
-            </div>
-            
-            <div className="stat-card">
-              <div className="stat-number">📈</div>
-              <div className="stat-label">Your Progress</div>
-              <p style={{ marginTop: "var(--spacing-2)", fontSize: "var(--font-size-sm)" }}>
-                <Link to="/profile" className="text-primary">View Profile →</Link>
-              </p>
-            </div>
-            
-            {roleState === "admin" && (
-              <div className="stat-card">
-                <div className="stat-number">⚙️</div>
-                <div className="stat-label">Admin Tools</div>
-                <p style={{ marginTop: "var(--spacing-2)", fontSize: "var(--font-size-sm)" }}>
-                  <Link to="/admin/questionset/create" className="text-primary">Create Quiz →</Link>
-                </p>
-              </div>
-            )}
+          <div className="stat-card">
+            <div className="stat-label">Quizzes Available</div>
+            <div className="stat-number">🚀</div>
+            <Link to="/questionset/list" style={{ marginTop: 'var(--spacing-4)', display: 'inline-block' }}>View All Quizzes →</Link>
           </div>
+          
+          <div className="stat-card">
+            <div className="stat-label">Your Profile</div>
+            <div className="stat-number">👤</div>
+            <Link to="/profile" style={{ marginTop: 'var(--spacing-4)', display: 'inline-block' }}>View Your Progress →</Link>
+          </div>
+          
+          {roleState === "admin" && (
+            <div className="stat-card">
+              <div className="stat-label">Admin Tools</div>
+              <div className="stat-number">⚙️</div>
+              <Link to="/admin/questionset/create" style={{ marginTop: 'var(--spacing-4)', display: 'inline-block' }}>Create a New Quiz →</Link>
+            </div>
+          )}
         </div>
-      </section>
 
-      {/* Community Section */}
-      {roleState === "admin" && (
-        <section style={{ 
-          background: "var(--bg-accent)", 
-          padding: "var(--spacing-16) 0" 
-        }}>
-          <div className="container">
-            <div className="text-center mb-8">
-              <h2>Community Overview</h2>
-              <p>Manage and view your BrainBuxx community</p>
+        {/* Community Section (Admin Only) */}
+        {roleState === "admin" && users.length > 0 && (
+          <div style={{ marginTop: 'var(--spacing-20)'}}>
+            <div className="text-center">
+              <h2 className="section-title">Community Overview</h2>
+              <p className="section-description">
+                A snapshot of the most recent users who have joined the platform.
+              </p>
             </div>
             
-            <div className="quiz-grid">
-              {users.slice(0, 6).map((user) => (
+            <div className="stats-grid">
+              {users.slice(0, 8).map((user) => (
                 <MyInformation
                   key={user._id}
                   id={user._id}
@@ -142,38 +104,9 @@ function AuthHomePage() {
                 />
               ))}
             </div>
-            
-            {users.length > 6 && (
-              <div className="text-center mt-8">
-                <p>And {users.length - 6} more users in your community</p>
-              </div>
-            )}
           </div>
-        </section>
-      )}
-
-      {/* Quick Actions */}
-      <section style={{ padding: "var(--spacing-16) 0" }}>
-        <div className="container text-center">
-          <h2>Quick Actions</h2>
-          <p style={{ marginBottom: "var(--spacing-8)" }}>
-            What would you like to do today?
-          </p>
-          <div className="flex justify-center gap-4 flex-wrap">
-            <Link to="/questionset/list" className="btn btn-primary">
-              Take a Quiz
-            </Link>
-            <Link to="/profile" className="btn btn-secondary">
-              Update Profile
-            </Link>
-            {roleState === "admin" && (
-              <Link to="/admin/questionset/create" className="btn btn-secondary">
-                Create New Quiz
-              </Link>
-            )}
-          </div>
-        </div>
-      </section>
+        )}
+      </div>
     </div>
   );
 }

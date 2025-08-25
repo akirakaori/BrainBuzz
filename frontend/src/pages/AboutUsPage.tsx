@@ -16,7 +16,7 @@ function AboutUsPage() {
       <section style={{ padding: "var(--spacing-16) 0" }}>
         <div className="container">
           <div className="text-center mb-8">
-            <h2>Our Mission</h2>
+            <h2 style={{ color: "lavender" }}>Our Mission</h2>
             <p>Making knowledge assessment accessible and engaging for everyone</p>
           </div>
           
@@ -26,7 +26,7 @@ function AboutUsPage() {
                 <div style={{ fontSize: "var(--font-size-4xl)", marginBottom: "var(--spacing-4)" }}>
                   🎯
                 </div>
-                <h3>Accurate Assessment</h3>
+                <h3 style={{ color: "lavender" }}>Accurate Assessment</h3>
                 <p>
                   Precise evaluation of knowledge and skills through well-designed 
                   multiple-choice questions and comprehensive scoring systems.
@@ -39,7 +39,7 @@ function AboutUsPage() {
                 <div style={{ fontSize: "var(--font-size-4xl)", marginBottom: "var(--spacing-4)" }}>
                   🚀
                 </div>
-                <h3>Continuous Learning</h3>
+                <h3 style={{ color: "lavender" }} >Continuous Learning</h3>
                 <p>
                   Foster a culture of continuous improvement through immediate 
                   feedback and progress tracking capabilities.
@@ -52,7 +52,7 @@ function AboutUsPage() {
                 <div style={{ fontSize: "var(--font-size-4xl)", marginBottom: "var(--spacing-4)" }}>
                   🤝
                 </div>
-                <h3>Community Driven</h3>
+                <h3 style={{ color: "lavender" }}>Community Driven</h3>
                 <p>
                   Building a supportive learning community where administrators 
                   and learners collaborate to achieve educational goals.
@@ -70,14 +70,14 @@ function AboutUsPage() {
       }}>
         <div className="container">
           <div className="text-center mb-8">
-            <h2>Platform Features</h2>
+            <h2 style={{ color: "lavender" }}>Platform Features</h2>
             <p>Everything you need for effective knowledge assessment</p>
           </div>
           
           <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-number">🔐</div>
-              <div className="stat-label">Secure Authentication</div>
+              <div className="stat-label" style={{ color: "lavender" }}>Secure Authentication</div>
               <p style={{ marginTop: "var(--spacing-2)", fontSize: "var(--font-size-sm)" }}>
                 JWT-based security with role-based access control
               </p>
@@ -114,14 +114,14 @@ function AboutUsPage() {
       <section style={{ padding: "var(--spacing-16) 0" }}>
         <div className="container">
           <div className="text-center mb-8">
-            <h2>Built with Modern Technology</h2>
+            <h2 style={{ color: "lavender" }}>Built with Modern Technology</h2>
             <p>Reliable, scalable, and performant technology stack</p>
           </div>
           
           <div className="quiz-grid">
             <div className="card">
               <div className="card-header">
-                <h3>Frontend</h3>
+                <h3 style={{ color: "lavender" }}>Frontend</h3>
               </div>
               <div className="card-body">
                 <ul style={{ listStyle: "none", padding: 0 }}>
@@ -135,7 +135,7 @@ function AboutUsPage() {
             
             <div className="card">
               <div className="card-header">
-                <h3>Backend</h3>
+                <h3 style={{ color: "lavender" }}>Backend</h3>
               </div>
               <div className="card-body">
                 <ul style={{ listStyle: "none", padding: 0 }}>
@@ -149,7 +149,7 @@ function AboutUsPage() {
             
             <div className="card">
               <div className="card-header">
-                <h3>Key Features</h3>
+                <h3 style={{ color: "lavender" }}>Key Features</h3>
               </div>
               <div className="card-body">
                 <ul style={{ listStyle: "none", padding: 0 }}>
@@ -180,10 +180,10 @@ function AboutUsPage() {
             Join QuizMaster Pro today and start your learning journey!
           </p>
           <div className="flex justify-center gap-4">
-            <a href="/register" className="btn btn-primary btn-lg" style={{ background: "var(--text-light)", color: "var(--primary-green)" }}>
+            <a href="/register" className="btn btn-primary btn-lg" style={{ background: "var(--text-light)", color: "purple" }}>
               Sign Up Now
             </a>
-            <a href="/" className="btn btn-secondary btn-lg" style={{ borderColor: "var(--text-light)", color: "var(--text-light)" }}>
+            <a href="/" className="btn btn-secondary btn-lg" style={{ borderColor: "var(--text-light)", color: "purple" }}>
               Learn More
             </a>
           </div>

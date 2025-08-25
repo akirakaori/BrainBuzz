@@ -394,8 +394,9 @@ function ProfilePage() {
                       </>
                     ) : (
                       <>
-                        <span className="btn-icon">💾</span>
+                        
                         Save Changes
+                        <span className="btn-icon">💾</span>
                       </>
                     )}
                   </button>
