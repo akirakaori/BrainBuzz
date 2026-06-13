@@ -147,7 +147,7 @@ npm run dev
 
 ---
 
-## Recruiter Highlights
+## Technical Highlights
 
 This project demonstrates:
 
