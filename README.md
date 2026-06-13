@@ -4,13 +4,31 @@ BrainBuzz is a full-stack quiz platform where professionals can attempt role-cur
 
 It demonstrates clean separation of concerns across frontend and backend layers, JWT-based security, role-aware authorization, and deterministic quiz grading.
 
-## Recruiter Snapshot
+## Technical Highlights
 
-- Built a full-stack product with React + TypeScript frontend and Node.js + Express backend.
-- Implemented JWT auth with protected routes and role-based admin controls.
-- Modeled relational-like data in MongoDB using Mongoose references.
-- Delivered a complete quiz lifecycle: authoring, listing, attempt submission, and scoring.
-- Added profile lifecycle support with user-profile split models.
+### Full-Stack Application Development
+
+Built a complete quiz management platform using React, TypeScript, Node.js, Express, and MongoDB.
+
+### Authentication & Authorization
+
+Implemented JWT-based authentication, protected routes, and role-based access control for administrators and professionals.
+
+### Quiz Lifecycle Management
+
+Designed and implemented quiz authoring, listing, attempt submission, automated grading, and result persistence workflows.
+
+### Database Design
+
+Modeled application data using MongoDB and Mongoose with structured relationships between users, profiles, quizzes, and submissions.
+
+### Secure API Development
+
+Developed RESTful APIs with authentication middleware, authorization controls, request validation workflows, and protected business operations.
+
+### Profile Management System
+
+Implemented profile creation, profile updates, skill management, and user-centric data organization through dedicated profile models.
 
 ## Table of Contents
 
@@ -274,6 +292,8 @@ Frontend runs on Vite dev server and proxies `/api` to `http://localhost:3000`.
 - Improve rate limiting and abuse protection for auth endpoints.
 - Fix minor payload naming mismatch in attempt flow (`selectedChoicesIds` vs backend expected key) for consistent scoring reliability.
 
-## Project Value
+## Technical Summary
 
-BrainBuzz is a strong portfolio project for demonstrating full-stack readiness: authentication, authorization, model design, protected APIs, and real user workflows from creation to result generation.
+BrainBuzz demonstrates full-stack application development using modern JavaScript technologies, secure authentication and authorization patterns, REST API design, database modeling, automated quiz grading workflows, and role-based user experiences.
+
+The project highlights practical implementation of software engineering principles including separation of concerns, middleware-based security, reusable component architecture, and scalable project organization.
